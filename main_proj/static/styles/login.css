@@ -1,0 +1,167 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+.logo{
+    display:flex;
+    max-width: 100%;
+    width: fit-content;
+    margin-left: 130px;
+    background: transparent;
+    border-radius: 100px;
+    padding: 3px;
+    border: 2px solid rgba(211, 206, 206, 0.559);
+}
+
+img{
+    max-width: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    width: fit-content;
+}
+
+.headingcontainer {
+    text-align: center;
+}
+
+.footcontainer button {
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    color: #fff;
+    padding: 10px 150px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #357ae8;
+}
+
+.box-login{
+    box-sizing: border-box;
+    padding: 40px 50px;
+    max-width: 500px;
+    background-color: #fff;
+    /* background */
+    box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.50); 
+    border-radius: 10px;
+}
+.right-text{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 400px;
+}
+
+.maincontainer {
+    padding: 20px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.maincontainer a{
+    display: flex;
+    margin-top: 3px;
+    margin-bottom: -10px;
+    font-size: .8rem;
+    font-weight: 100;
+    margin-left: 5px; 
+    text-decoration: none;
+    justify-content: end;
+    color: #000;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* password function*/
+
+.set{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+}
+
+#check1,#check2,#check3,#check4,#check5{
+    margin: 5px 0;
+    color: red;
+    font-size: xx-small;
+    display: none;
+}
+
+#see{
+    color: grey;
+    transition-duration: .5s;
+    
+}
+
+span{
+    margin: 0 5px;
+}
+
+/* .input input{
+    display: none;
+} */
+
+.alert-danger strong{
+    justify-content: center;
+    margin-left: 100px;
+}
+
+/* password end */
+
+.footcontainer {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.headingcontainer{
+    display: flex;
+    justify-content: center;
+}
+
+.headingcontainer h6{
+    font-weight: 600;
+}
+
+.headingcontainer button{
+    color: #fff;
+    text-decoration: none;
+    margin: 10px;
+    padding: 11px 13px;
+    border: none;
+    background: rgba(255, 0, 0, 0.795);
+    border-radius: 60%;
+}
+
+.line{
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #00000034;
+    padding: 10px;
+}

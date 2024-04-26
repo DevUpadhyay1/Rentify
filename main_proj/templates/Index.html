@@ -1,0 +1,412 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="Rental E-Commerce">
+    <link rel="stylesheet" href="{% static 'styles/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/product.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Rentify</title>
+    <script src="https://kit.fontawesome.com/1b798a1e6d.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@500;600&display=swap" rel="stylesheet">
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+                var slides = $(".slide");
+                for (var i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) { slideIndex = 1 }
+                slides[slideIndex - 1].style.display = "block";
+                setTimeout(showSlides, 2000); // Change image every 2 seconds
+            }
+        });
+    </script>
+
+
+</head>
+
+<div>
+    <nav class="Navbar">
+        <a href="index.html" class="logo">
+            <i class="ri-home-heart-fill"></i>
+            <span>REC</span>
+            <!-- <img class="img-logo" src="REC.png"> -->
+        </a>
+
+        <ul class="navbar">
+            <div class="box" id="searchBox">
+                <input type="search" name="" id="find" placeholder="Search..." onkeyup="search()">
+                <a href="#"><i id="searchicon" class="fas fa-search"></i></a>
+            </div>
+            <div class="div1">
+                <li><a href="#" class="Location">
+                        <!-- <i class="ri-map-pin-2-fill"></i> -->
+                        Location</a></li>
+            </div>
+            <div class="div1">
+                <li><a href="#" class="Contact">
+                        <!-- <i class="ri-contacts-book-3-fill"></i> -->
+                        Contact Us</a></li>
+            </div>
+            <div id="notification-button" class="div1" onclick="togglePopup()">
+                <li>
+                  <a href="#" class="Notification">
+                    Notification
+                  </a>
+                </li>
+              </div>
+
+        </ul>
+
+        <div class="main">
+            {% if user.is_authenticated %}
+            <div class="dropdown">
+                <button class="dropbtn">Account</button>
+                <div class="dropdown-content">
+                    <a href="#">View and Update Profile</a>
+                    <a href=" {% url 'sign-out' %}">Logout</a>
+                </div>
+            </div>
+            {% else %}
+            <div class="div2">
+                <a href="user/sign-in" class="Rent">
+                    <!-- <i class="ri-add-circle-fill"></i> -->
+                    Login</a>
+                <!-- </div> -->
+            </div>
+            {% endif %}
+            
+            <div class="div2">
+                <a href="categories" class="Rent">
+                    <!-- <i class="ri-add-circle-fill"></i> -->
+                    Rent</a>
+                <!-- </div> -->
+            </div>
+
+           
+
+            <div class="bx bx-menu" id="menu-icon"></div>
+
+        </div>
+    </nav>
+
+    
+        
+    
+    <div id="popup" class="popup">
+        <div class="content">
+            <img src="">
+            <span class="popup-content">user.name</span><p>has requested for rent your product.</p>
+        </div>
+        <div class="content">
+            <img src="">
+            <span class="popup-content">user.name</span><p>has requested for rent your product.</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div>
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    <strong>{{message}}</strong>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="image"><img src="{% static 'images/main-2.jpg' %}" alt=""></div>
+
+        <section>
+
+            <div class="slider">
+
+                <div class="slides">
+
+                    {% for image in image_paths %}
+                    <div class="slide first">
+                        <img src="{% static image %}" alt="">
+                    </div>
+                    {% endfor %}
+                    
+                    <div class="navigation-radio">
+                        {% for i in image_paths %}
+                        <input type="radio" class="radio-btn" name="radio-btn" id="radio{{ forloop.counter }}">
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+
+
+<div class="underlinemain"></div>
+<div class="cata-head">
+    <h1>Categories</h1>
+</div>
+
+<div class="cata">
+
+    {% for pho in cate %}
+    <div class="pic-pic1 reveal">
+        <a href="#">
+            <div class="pic1">
+                <li><img src="{{pho.img.url}}" alt=""></li>
+            </div>
+        </a>
+        <a href="#">
+            <div class="pic2">
+                <li><img src="{{pho.img.url}}" alt=""></li>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+    <!-- <div class="pic-pic2 reveal">
+                <a href="#"><div class="pic3"><li><img src="furniture.jpg" alt=""></li></div></a>
+                <a href="#"><div class="pic4"><li><img src="Furniturerental.png" alt=""></li></div></a>
+            </div>
+            <div class="pic-pic3 reveal">
+                <a href="#"><div class="pic5"><li><img src="CarRental.png" alt=""></li></div></a>
+                <a href="#"><div class="pic6"><li><img src="banglow.png" alt=""></li></div></a>
+            </div>
+            <div class="pic-pic4 reveal">
+                <a href="#"><div class="pic7"><li><img src="CarRental.webp" alt=""></li></div></a>
+                <a href="#"><div class="picn"><li><img src="Furniturerental.png" alt=""></li></div></a>
+            </div>
+            <div class="pic-pic5 reveal">
+                <a href="#"><div class="pic8"><li><img src="main-1.jpeg" alt=""></li></div></a>
+                <a href="#"><div class="pic9"><li><img src="Furniturerental.png" alt=""></li></div></a>
+            </div> -->
+
+</div>
+<a class="morebtn" href="categories"><button class="moreCategoriesBtn">More Categories</button></a>
+
+<div class="underlinemain"></div>
+
+
+
+
+<div class="RentalProducts">
+    <div class="rentheading">
+        <h1>Rental Products</h1>
+    </div>
+
+    <div class="products">
+
+        <div class="product reveal">
+            <img src="Apple.jpg" alt="Product 1">
+            <div class="imgname">
+                <h2>Product det</h2>
+                <h4><span>4.1</span><i class="ri-star-fill"></i></h4>
+            </div>
+            <div class="itemprice">
+                <h3><span>₹</span>10</h3>
+                <h3>/Day</h3>
+                <h5>312</h5>
+            </div>
+            <p><span>Description:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div class="pbottom">
+                <div class="stars" id="product1">
+                    <span class="star" onclick="rate(1)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(2)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(3)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(4)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(5)"><i class="ri-star-fill"></i></span>
+                </div>
+                <button class="rentproduct">Rent</button>
+            </div>
+        </div>
+
+        <div class="product reveal">
+            <img src="Apple.jpg" alt="Product 1">
+            <div class="imgname">
+                <h2>Mirav</h2>
+                <h4><span>4.1</span><i class="ri-star-fill"></i></h4>
+            </div>
+            <div class="itemprice">
+                <h3><span>₹</span>10</h3>
+                <h3>/Day</h3>
+                <h5>312</h5>
+            </div>
+            <p><span>Description:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div class="pbottom">
+                <div class="stars" id="product2">
+                    <span class="star" onclick="rate(1)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(2)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(3)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(4)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(5)"><i class="ri-star-fill"></i></span>
+                </div>
+                <button class="rentproduct">Rent</button>
+            </div>
+        </div>
+
+        <div class="product reveal">
+            <img src="Apple.jpg" alt="Product 1">
+            <div class="imgname">
+                <h2>Apple</h2>
+                <h4><span>4.1</span><i class="ri-star-fill"></i></h4>
+            </div>
+            <div class="itemprice">
+                <h3><span>₹</span>10</h3>
+                <h3>/Day</h3>
+                <h5>312</h5>
+            </div>
+            <p><span>Description:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div class="pbottom">
+                <div class="stars">
+                    <span class="star" onclick="rate(1)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(2)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(3)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(4)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(5)"><i class="ri-star-fill"></i></span>
+                </div>
+                <button class="rentproduct">Rent</button>
+            </div>
+        </div>
+
+        <div class="product reveal">
+            <img src="Apple.jpg" alt="Product 1">
+            <div class="imgname">
+                <h2>Vah</h2>
+                <h4><span>4.1</span><i class="ri-star-fill"></i></h4>
+            </div>
+            <div class="itemprice">
+                <h3><span>₹</span>10</h3>
+                <h3>/Day</h3>
+                <h5>312</h5>
+            </div>
+            <p><span>Description:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div class="pbottom">
+                <div class="stars">
+                    <span class="star" onclick="rate(1)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(2)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(3)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(4)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(5)"><i class="ri-star-fill"></i></span>
+                </div>
+                <button class="rentproduct">Rent</button>
+            </div>
+        </div>
+
+        <div class="product reveal">
+            <img src="Apple.jpg" alt="Product 1">
+            <div class="imgname">
+                <h2>Hi</h2>
+                <h4><span>4.1</span><i class="ri-star-fill"></i></h4>
+            </div>
+            <div class="itemprice">
+                <h3><span>₹</span>10</h3>
+                <h3>/Day</h3>
+                <h5>312</h5>
+            </div>
+            <p><span>Description:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div class="pbottom">
+                <div class="stars">
+                    <span class="star" onclick="rate(1)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(2)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(3)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(4)"><i class="ri-star-fill"></i></span>
+                    <span class="star" onclick="rate(5)"><i class="ri-star-fill"></i></span>
+                </div>
+                <button class="rentproduct">Rent</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+<footer class="footer">
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'images/PngLogo.png' %}" class="logo-footer">
+            <p>
+                We are students of Charusat University. Currently we are pursuing the bachelor degree of computer
+                engineering.
+
+
+            </p>
+        </div>
+        <div class="col">
+            <h3>Head Office
+                <div class="underline"><span></span></div>
+            </h3>
+            <p> SG Highway</p>
+            <p> Near Havmor Factory, Ahemedabad</p>
+            <p>Gujarat, PIN-399001, India</p>
+            <p class="email-id">rec@gmail.com</p>
+            <p></p>
+        </div>
+        <div class="col">
+            <h3>Customer care
+                <div class="underline"><span></span></div>
+            </h3>
+            <ul>
+                <li><a href="#">Report </a></li>
+                <li><a href="#">Return Issues</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Return Policies</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="col">
+            <h3>For Updates...
+                <div class="underline"><span></span></div>
+            </h3>
+            <form>
+                <i class="fa-regular fa-envelope"></i>
+                <input type="email" placeholder="Enter your E-mail" required>
+                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+            <div class="social-icons">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-whatsapp"></i>
+                <i class="fa-brands fa-pinterest"></i>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <p class="copyright"> REC.com © 2024 - All Right Reserved</p>
+</footer>
+ 
+
+
+
+
+
+<script src="https://kit.fontawesome.com/1b798a1e6d.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'JS/index.js' %}"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

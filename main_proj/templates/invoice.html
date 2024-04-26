@@ -1,0 +1,78 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="Rental E-Commerce">
+    <link rel="stylesheet" href="{% static 'styles/invoice.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Rentify</title>
+    <script src="https://kit.fontawesome.com/1b798a1e6d.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@500;600&display=swap" rel="stylesheet">
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <h1>#Invoice</h1>
+        <div class="invoice">
+            <h6>Rentify.com</h6>
+            <div class="user-details">
+                <p><strong>Renter Name:</strong> John Doe</p>
+                <p><strong>Email:</strong> john@example.com</p>
+                <p><strong>Address:</strong> 123 Main St, City, Country</p>
+                <!-- user have to manually write his/her aadhaarcard number and varify to owner of product-->
+                <p><strong>AadhaarCard:</strong> 1234 5678 9101 1213</p> 
+            </div>
+            <div class="product-details">
+                <h4>Product Name</h4>
+                <img src="banglow.jpg" alt="Product Image">
+                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            
+                <div class="text">
+                    <p> &ensp; &emsp;&ensp; &emsp;
+                        I am 
+                        <span>user.name</span>
+                        and I am renting 
+                        <span>product.name</span>
+                        from 
+                        <span>product.start_date</span>
+                        to 
+                        <span>product.end_date</span>
+                        for
+                        <span>product.duration_month</span>
+                        month/  
+                        <span>product.duration_days</span>
+                        days.
+                        I agree to pay the total amount of 
+                        <span>product.price</span>
+                        for the duration of the rental.
+                        I understand that I am responsible for the safety of the rented item.
+                        <span style="display: flex; justify-content: right; text-decoration: none;font-weight: 100;">Thank You.</span>     
+                    </p>
+                     
+                </div>
+            </div>
+            <div class="total">
+                <div class="sign">
+                    <p><strong>Signature of Renter:</strong></p>
+                </div>
+                <div class="rent">
+                    <p><strong>Rent:</strong> $100</p>
+                </div>
+            </div>
+        </div>
+        
+
+        <script async defer> 
+            window.onload = function() {
+                window.print();
+            };
+        </script>
+    </body>
+</html>

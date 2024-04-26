@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+}
+
+.invoice {
+    width: 93%;
+    max-width: 800px;
+    /* height: 900px; */
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.invoice h6 {
+    display: flex;
+    border: 1px solid #000;
+    justify-content: center;
+}
+
+.user-details p{
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+}
+
+
+.user-details{
+    border: 1px solid #000;
+    padding: 5px 10px;
+}
+
+.product-details{
+    border: 1px solid #000;
+    margin: 5px 0;
+    overflow: hidden;
+    padding: 5px 10px;
+}
+
+.product-details h4{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+}
+
+.product-details p{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+}
+
+.product-details img {
+    position: relative;
+    left: 100px;
+    max-width: 450px;
+    height: auto;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+.tq span{
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+}
+
+.total {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    /* left: 86%; */
+    border: 1px solid #000;
+    padding: 5px 10px;
+}
+
+.text p{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+}
+
+.text span{
+    text-decoration: underline;
+    font-size: medium;
+    font-weight: 600;
+}
