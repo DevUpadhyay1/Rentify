@@ -92,12 +92,22 @@
             </div>
             {% endif %}
             
+            {% if user.is_authenticated %}
             <div class="div2">
                 <a href="categories" class="Rent">
                     <!-- <i class="ri-add-circle-fill"></i> -->
                     Rent</a>
                 <!-- </div> -->
             </div>
+            {% else %}
+            <div class="div2">
+                <a href="user/sign-in" class="Rent">
+                    <!-- <i class="ri-add-circle-fill"></i> -->
+                    Rent</a>
+                <!-- </div> -->
+            </div>
+            {% endif %}
+            
 
            
 
@@ -105,6 +115,16 @@
 
         </div>
     </nav>
+
+    <div>
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}}">
+                <strong>{{message}}</strong>
+            </div>
+            {% endfor %}
+        {% endif %}
+        </div>
 
     
         
@@ -120,16 +140,9 @@
         </div>
     </div>
     
+
     <div class="section">
-        <div>
-            {% if messages %}
-                {% for message in messages %}
-                <div class="alert alert-{{message.tags}}">
-                    <strong>{{message}}</strong>
-                </div>
-                {% endfor %}
-            {% endif %}
-        </div>
+      
         <div class="image"><img src="{% static 'images/main-2.jpg' %}" alt=""></div>
 
         <section>

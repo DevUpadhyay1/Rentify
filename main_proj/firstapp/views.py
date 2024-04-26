@@ -1,5 +1,6 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from table.models import *
 
@@ -22,6 +23,7 @@ def Index(request):
     ]
     return render(request, 'Index.html', {'image_paths': image_paths})
 
+@login_required
 def category_list_view(request):
     categories = Category.objects.all()
 
