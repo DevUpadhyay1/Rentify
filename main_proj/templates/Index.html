@@ -79,11 +79,16 @@
             {% if user.is_authenticated %}
             <div class="dropdown">
                 <button class="dropbtn">Account</button>
-                <div class="dropdown-content">
-                    <a href="#">View and Update Profile</a>
+                <div class="dropdown-content" id="dropdown-content">
+                    <div class="userimg">
+                        <img src="user.jpeg">
+                        <span>Mirav21</span>
+                    </div>
+                    <a href="{% url 'Profile' id=user.id %}">View and Update Profile</a>
                     <a href=" {% url 'sign-out' %}">Logout</a>
-                </div>
+                </div>          
             </div>
+
             {% else %}
             <div class="div2">
                 <a href="user/sign-in" class="Rent">
@@ -126,6 +131,25 @@
             {% endfor %}
         {% endif %}
         </div>
+
+        <!-- 
+             alert message box start 
+
+        <div class="alertbox" id="alertbox">
+            <div class="close">
+                <button class="closebtn"><i class="fa fa-close" id="close"></i></button>
+            </div>
+            <div class="alertimg">
+                <img src="alert.png" alt="">
+            </div>
+            <div class="message">    
+                <p>Logged-in Successful!</p>
+            </div>
+        </div>
+        
+ alert message box end -->
+
+   
 
     
         
@@ -221,6 +245,7 @@
 
 
 
+
 <div class="RentalProducts">
     <div class="rentheading">
         <h1>Rental Products</h1>
@@ -228,18 +253,22 @@
 
     <div class="products">
 
+        {% for product in products %}
         <div class="product reveal">
-            <img src="Apple.jpg" alt="Product 1">
+            
+            {% for image in images %}
+            <img src="{{ image.get_photo_url }}" class="img-responsive thumbnail" alt="img" >
+            {% endfor %}
             <div class="imgname">
-                <h2>Product det</h2>
+                <h2>{{product.title}}</h2>
                 <h4><span>4.1</span><i class="ri-star-fill"></i></h4>
             </div>
             <div class="itemprice">
-                <h3><span>₹</span>10</h3>
+                <h3><span>₹</span>{{product.price}}</h3>
                 <h3>/Day</h3>
                 <h5>312</h5>
             </div>
-            <p><span>Description:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p><span>Description:</span>{{product.descrption}}</p>
             <div class="pbottom">
                 <div class="stars" id="product1">
                     <span class="star" onclick="rate(1)"><i class="ri-star-fill"></i></span>
@@ -251,8 +280,9 @@
                 <button class="rentproduct">Rent</button>
             </div>
         </div>
+        {% endfor %}
 
-        <div class="product reveal">
+        <!-- <div class="product reveal">
             <img src="Apple.jpg" alt="Product 1">
             <div class="imgname">
                 <h2>Mirav</h2>
@@ -346,10 +376,10 @@
                 </div>
                 <button class="rentproduct">Rent</button>
             </div>
-        </div>
+        </div> -->
 
     </div>
-
+    
 
 
 

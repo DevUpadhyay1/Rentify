@@ -203,3 +203,104 @@ window.onclick = function(event) {
     }
   }
 }
+
+
+document.querySelector(".dropbtn").addEventListener("click",function(){
+            
+  if(document.getElementById('dropdown-content').style.display == 'none'){
+      document.getElementById('dropdown-content').style.display = 'block';
+  }
+  else{
+      document.getElementById('dropdown-content').style.display = 'none';
+   }
+        });
+
+document.querySelector(".closebtn").addEventListener("click",function(){
+            
+  if(document.getElementById('alertbox').style.display = 'flex'){
+      document.getElementById('alertbox').style.display = 'none';
+  }
+});
+
+
+
+// Profile js
+
+        //           User          Loction
+
+        const address = document.querySelector(".a1");
+        const address1 = document.querySelector(".a2");
+
+        let apiEndpoint = "https://api.opencagedata.com/geocode/v1/json";
+        let apiKey = "8367b00a81154348a051685d400b4ad4";
+
+        const getUserCurrentPosition = async (latitude, longitude) => {
+            var api_key = '8367b00a81154348a051685d400b4ad4';
+            var query = latitude + ',' + longitude;
+            var api_url = 'https://api.opencagedata.com/geocode/v1/json'
+
+            var request_url = api_url
+                + '?'
+                + 'key=' + api_key
+                + '&q=' + encodeURIComponent(query)
+                + '&pretty=1'
+                + '&no_annotations=1';
+
+            var request = new XMLHttpRequest();
+            request.open('GET', request_url, true);
+
+            request.onload = function () {
+
+                if (request.status === 200) {
+                    var data = JSON.parse(request.responseText);
+                    const { state_district, road, road_type, state, postcode, country } = data.results[0].components;
+                    address1.textContent = state_district + ", " + road + ", " + road_type + ", " + postcode + ", " + state + ", " + country + ".";
+                    //address1.textContent = data.results[0].formatted;
+
+                } else if (request.status <= 500) {
+                    console.log("unable to geocode! Response code: " + request.status);
+                    var data = JSON.parse(request.responseText);
+                    console.log('error msg: ' + data.status.message);
+                } else {
+                    console.log("server error");
+                }
+            };
+
+            request.onerror = function () {
+                console.log("unable to connect to server");
+            };
+
+            request.send();
+        };
+
+        document.querySelector('.inpaddress').addEventListener('click', () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const { latitude, longitude } = position.coords;
+                        address.textContent = `${latitude},${longitude}`;
+                        getUserCurrentPosition(latitude, longitude);
+                    },
+                    (error) => {
+                        address.textContent = error.message;
+                    }
+                );
+            }
+        });
+
+        //location end 
+
+
+
+        //copy text
+        function copyText() {
+            const textToCopy = document.getElementById('coordinates').innerText;
+            const tempInput = document.createElement('input');
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            document.getElementById('popupForm').style.display = 'none';
+        }

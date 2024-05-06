@@ -512,28 +512,55 @@ hr {
     vertical-align: middle;
 }
 
+/* Alertbox css */
 
-/* Video */
-/* .main-div{
-    border: 10px solid black;    
+.alertbox{
+    position: fixed;
+    display: none;
+    justify-content: center;
+    top: 40%;
+    left: 40%;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    background-color: #ccc;
+    border-radius: 10px;
+    z-index: 1000000;
 }
 
-.main-video{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
+.alertimg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    margin-top: -60px;
 }
 
-@media(min-aspect-ratio: 16/9){
-    .main-video{
-        width: 100%;
-        height: auto;
-    }
+.alertimg img{
+    width: 50px;
+    background-color: #000;
+    border-radius: 50%;
 }
-@media(max-aspect-ratio: 16/9){
-    .main-video{
-        width: 100%;
-        height: auto;
-    }
-} */
+
+.close{
+    position: inherit;
+    display: flex;
+    top: 41%;
+    right: 43%;
+    background-color: none;
+    cursor: pointer;
+    background-color: none;
+}
+
+.close button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.message p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+    font-weight: 500;
+}

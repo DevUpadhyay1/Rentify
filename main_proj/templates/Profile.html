@@ -1,0 +1,114 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Profile</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'styles/profile.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    
+    <div class="profile">
+
+        <div class="col1">
+
+            <div class="row1">
+                <div class="img">
+                    <img id="previewImage" src="" style="display: block;">
+                </div>
+                <div class="profilename">
+                    <h3></h3>
+                    <span>{{ user.email }}</span>
+                </div>
+                <div class="underline"></div>
+                <div class="profilebtn">
+                    <a href="update_profile"><button class="Update">Update Profile</button></a>
+                    <a href="#"><button class="info">Product Info</button></a>
+                </div>
+            </div>
+
+        </div>
+       
+        <div class="col2">
+
+            <div class="row2" style="border-bottom: none;">
+                <span>Address Information </span>  
+            </div>
+            <div class="row2">
+                
+                <p class="a2">Address :</p>  
+                <p class="a1" id="coordinates">Latitude , Longitude :</p>
+                <button id="copy" onclick="copyText()">Copy ↑</button>
+                <button class="inpaddress" onclick="">Location</button>
+                <div class="note">
+                    <p style="border: none;font-size: small;padding-top: 10px;color: #000;"><strong>Note : </strong>To get your current Location Please allow location access in your browser.</p>
+                </div>
+            </div>
+
+            <div class="row3">
+                <span>Personal Information</span>
+                
+            </div>
+
+            <div class="row4">
+                
+                <p><strong style="font-weight: 600;">Contact Number - </strong>1234567890</p>
+                <p><strong style="font-weight: 600;">Date of Birth - </strong>21 July, 2004</p>
+            </div>
+
+            <div class="copyright">
+                <span>REC.com © 2024 - All Right Reserved</span>
+            </div>
+
+        </div>
+
+    </div>
+            
+
+
+
+
+
+        <!-- popup form -->
+        <!-- <div id="popupForm" class="popupForm">
+            <span class="close" onclick="closePopupForm()">&times;</span>
+            <h2>Update Profile</h2>
+            <form>
+                <label for="profileImage">Add Profile Image:</label>
+                <input type="file" id="profileImage" name="profileImage" accept="image/*"><br><br>
+
+                <label for="name">Change Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+
+                <label for="email">Change Email-ID:</label>
+                <input type="email" id="email" name="email"><br><br>
+
+                <label for="contact">Change Contact No.:</label>
+                <input type="text" id="contact" name="contact" pattern="[0-9]{10}" title="Please enter exactly 10 digits"><br><br>
+
+                <input type="button" value="Save Changes" onclick="saveChanges()">
+            </form>
+        </div> -->
+
+    
+
+
+
+
+
+
+        <script type="text/javascript" src="{% static 'JS/index.js' %}" async defer></script>
+</body>
+
+</html>

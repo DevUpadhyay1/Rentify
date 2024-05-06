@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import CustomeUser
+from django.utils import timezone
 from django.utils.html import mark_safe
 # Create your models here.
 
@@ -75,7 +76,7 @@ class Product(models.Model):
     Category = models.ForeignKey(Category,on_delete=models.SET_NULL,null=True)
 
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to=user_directory_path)
+    image = models.ImageField(upload_to="product",null=True)
     descrption = models.TextField(null=True,blank=True,default="This is a product")
 
     price = models.DecimalField(max_digits=10,decimal_places=2)
@@ -87,14 +88,20 @@ class Product(models.Model):
 
     status = models.BooleanField(default=True)
 
-    sdate = models.DateField(auto_now_add=True)
-    edate = models.DateField(auto_now_add=True)
+    days = models.DecimalField(max_digits=10,decimal_places=3,default=0,null=True)
+
+    sdate = models.DateField(default=timezone.now)
+    edate = models.DateField(default=timezone.now)
 
     class Meta:
         verbose_name_plural = "Product"
 
-    def Product_image(self):
-        return mark_safe('<img srs = "%s" />' % (self.image.url))
+    @property
+    def get_photo_url(self):
+        if self.image and hasattr(self.image, 'url'):
+                return self.image.url
+        else:
+            return "/static/images/user.jpg"
     
     def __str__(self):
         return self.title
@@ -104,6 +111,13 @@ class ProductImages(models.Model):
     product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
     Category = models.ForeignKey(Category,on_delete=models.SET_NULL,null=True)
     date = models.DateField(auto_now_add=True)
+
+    @property
+    def get_photo_url(self):
+        if self.images and hasattr(self.images, 'url'):
+                return self.images.url
+        else:
+            return "/static/images/user.jpg"
 
     class Meta:
         verbose_name_plural = "Product_images"
@@ -133,8 +147,8 @@ class Product_availibility(models.Model):
 
     availibility = models.BooleanField(default =False)
 
-    sdate = models.DateField(auto_now_add=True)
-    edate = models.DateField(auto_now_add=True)
+    sdate = models.DateField()
+    edate = models.DateField(null=False,blank=False)
 
     class Meta:
         verbose_name_plural = "Product Avilibility"

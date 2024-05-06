@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -16,67 +16,67 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://kit.fontawesome.com/1b798a1e6d.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@500;600&display=swap" rel="stylesheet">
-    <!-- <title>Rent</title> -->
+    <title>Rent</title>
 </head>
 
-<body>
+<body> -->
 
 
 
-    <nav class="Navbar">
+<!-- <nav class="Navbar">
         <a href="index.html" class="logo">
             <i class="ri-home-heart-fill"></i>
             <span>REC</span>
-            <!-- <img class="img-logo" src="REC.png"> -->
-        </a>
+            <img class="img-logo" src="REC.png">
+        </a> -->
 
-        <ul class="navbar">
+<!-- <ul class="navbar">
             <div class="box">
                 <input type="text" placeholder="Search...">
                 <a href="#"><i class="fas fa-search"></i></a>
             </div>
             <div class="div1">
                 <li><a href="#" class="Location">
-                        <!-- <i class="ri-map-pin-2-fill"></i> -->
+                        <i class="ri-map-pin-2-fill"></i>
                         Location</a></li>
             </div>
             <div class="div1">
                 <li><a href="#" class="Contact">
-                        <!-- <i class="ri-contacts-book-3-fill"></i> -->
+                        <i class="ri-contacts-book-3-fill"></i>
                         Contact Us</a></li>
             </div>
             <div class="div1">
                 <li><a href="#" class="Notification">
-                        <!-- <i class="ri-contacts-book-3-fill"></i> -->
+                        <i class="ri-contacts-book-3-fill"></i>
                         Notification</a></li>
             </div>
 
-        </ul>
+        </ul> -->
 
-        <div class="main">
+<!-- <div class="main">
             <div class="dropdown">
                 <button class="dropbtn">Account</button>
                 <div class="dropdown-content">
                     <a href="#">My Profile</a>
                     <a href="#">Logout</a>
                 </div>
-            </div>
-            <div class="div2">
+            </div> -->
+<!-- <div class="div2">
                 <a href="#" class="Rent">
-                    <!-- <i class="ri-add-circle-fill"></i> -->
+                    <i class="ri-add-circle-fill"></i>
                     Rent</a>
-                <!-- </div> -->
-            </div>
-
+                </div>
+            </div> -->
+<!-- 
             <div class="bx bx-menu" id="menu-icon"></div>
 
         </div>
 
-    </nav>
+    </nav> -->
 
-    <!-- {% comment %}
+<!-- {% comment %}
     {% endcomment %} -->
-    <div class="container">
+<!-- <div class="container">
         <h1>Add Product</h1>
         <div class="form">
             <input type="text" id="productName" placeholder="Product Name">
@@ -214,4 +214,78 @@
         <script type="text/javascript" src="{% static 'JS/index.js' %}"></script>
 </body>
 
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <label>
+            Enter Title of the Product
+            <div>
+                {{product_form.title}}
+            </div>
+        </label><br><br>
+
+        <label>
+            Enter images of the Product
+            <div>
+                {{ formset.management_form}}
+                {% for form in formset %}
+                    {{ form.as_p }}
+                {% endfor %}
+            </div>
+
+        </label><br><br>
+
+        <label>
+            Description about Product
+            <div>
+                {{product_form.descrption}}
+            </div>
+        </label><br><br>
+
+        <label>
+            Enter price
+            <div>
+                {{product_form.price}}
+            </div>
+        </label><br><br>
+
+        <label>
+            Enter Days
+            <div>
+                {{product_form.day}}
+            </div>
+        </label><br><br>
+
+        <button type="submit">Add User Details</button>
+        <!-- <label>
+            Ending date
+            <div>
+                <input  required type="date" name="edata" id="ed" ><br>
+            </div>
+        </label><br><br> -->
+
+        <!-- <label>
+            <div>
+                <input  required type="text" name="status" id="sta"><br>
+            </div>
+        </label> -->
+
+
+
+    </form>
+</body>
+
 </html>
+

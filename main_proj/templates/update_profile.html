@@ -1,0 +1,91 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EditProfile</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'styles/profile.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="profile">
+
+        <!--  -->
+        <div class="col1">
+
+            <div class="row1">
+                <div class="img">
+                    <img id="previewImage" src="{% static 'images/user.jpeg' %}" style="display: block;">
+                </div>
+        
+                <div class="profilename">
+                    <h3>Mirav21</h3>
+                    <span>email@gmail.com</span>
+                </div>
+                <div class="underline"></div>
+                <div class="profilebtn">
+                    <a href="#"><button class="Update">Update Profile</button></a>
+                    <a href="#"><button class="info">Product Info</button></a>
+                </div>
+            </div>
+
+        </div>
+        <!--  -->
+
+        <div class="col2">
+
+            <div class="row2" style="border-bottom: none;">
+                <span>Enter Information </span>  
+            </div>
+            <div class="row2" style="height: 100%;">
+
+                <form class="Form">
+                    <label for="profileImage">Add Profile Image:</label>
+                    <input type="file" id="profileImage" name="profileImage" accept="image/*"><br><br>
+                    <!-- <div class="img">
+                        <img id="imagePreview" alt="Preview" style="display:none;"><br><br>
+                    </div> -->
+                    <label for="name">Change Name:</label>
+                    <input type="text" id="name" name="name"><br><br>
+                
+                    <label for="email">Change Email-ID:</label>
+                    <input type="email" id="email" name="email"><br><br>
+                
+                    <label for="contact">Change Contact No.:</label>
+                    <input type="number" id="contact" name="contact" placeholder="Please enter exactly 10 digits"><br><br>
+
+                    <label for="dob">Change DateofBirth:</label>
+                    <input type="date" id="dob" name="dob"><br><br>
+
+                    <span style="font-weight: 300;font-size: 10px;"><strong>Note: </strong>You have to fill all the required field.</span><br>
+                
+                    <button class="save">Save Changes</button>
+                </form>
+                
+
+            </div>
+
+            <div class="copyright">
+                <span>REC.com © 2024 - All Right Reserved</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript" src="{% static 'JS/index.js' %}"></script>
+</body>
+
+</html>

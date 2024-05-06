@@ -4,10 +4,11 @@ from table.models import *
 
 class ProductImageAdmin(admin.TabularInline):
     model = ProductImages
+    # list_display = ['image']
 
 class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImageAdmin]
-    list_display = ['user','title','Product_image','price','product_status']
+    list_display = ['user','title','image','descrption','price','status','sdate','edate']
 
 class CategoryAdmin(admin.ModelAdmin):
     inlines = [ProductImageAdmin]

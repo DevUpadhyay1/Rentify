@@ -10,6 +10,8 @@ def user_directory_path(instance,filename):
 
 class CustomeUser(AbstractUser):
     username = None
+    firstname = models.CharField(max_length=100,default='')
+    lastname = models.CharField(max_length=100,default='')
     email = models.EmailField(_("email address"), unique=True)
     contact = models.CharField(max_length=20, default='')
     user_profile_pic = models.ImageField(upload_to=user_directory_path, default='images/default.jpeg')
@@ -20,5 +22,8 @@ class CustomeUser(AbstractUser):
 
     objects = CustomUserManager()
 
+    # def __str__(self):
+    #     return self.email
+    
     def __str__(self):
-        return self.email
+        return f"{self.firstname} {self.lastname}"
