@@ -6,7 +6,7 @@ class ProductForm(forms.ModelForm):
     # image = forms.image(widget=forms.FileInput(attrs={"id":"pim"}))
     descrption = forms.CharField(widget=forms.Textarea(attrs={"id":"desc"}))
     price = forms.DecimalField(widget=forms.NumberInput(attrs={"id":"price"}))
-    day=forms.DecimalField(widget=forms.NumberInput(attrs={"id":"day"}))
+    product_rent_time_status = forms.CharField(widget=forms.TimeInput(attrs={"id":"pts"}))
     # sdate = forms.DateField(widget=forms.DateInput(attrs={"id":"desc"}))
     # edata = forms.DateField(widget=forms.DateInput(attrs={"id":"desc"}))
 
@@ -19,3 +19,6 @@ class ImageForm(forms.ModelForm):
     class Meta:
         model = ProductImages
         fields = ['images']
+
+# class UserAddress(forms.ModelForm):
+

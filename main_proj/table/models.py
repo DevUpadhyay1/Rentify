@@ -22,6 +22,10 @@ RATING = (
     ("5","★★★★★")
 )
 
+TIME_CHOICE = (
+    ("\Day","Day"),
+    ("\Month","Months")
+)
 def user_directory_path(instance,filename):
     return 'user_{0}/{1}'.format(instance.user.id,filename)
 
@@ -87,8 +91,7 @@ class Product(models.Model):
     product_status = models.CharField(choices=STATUS,max_length=10)
 
     status = models.BooleanField(default=True)
-
-    days = models.DecimalField(max_digits=10,decimal_places=3,default=0,null=True)
+    product_rent_time_status = models.CharField(choices=TIME_CHOICE,max_length=10,default="Day")
 
     sdate = models.DateField(default=timezone.now)
     edate = models.DateField(default=timezone.now)
